@@ -3,28 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funkmast 4</title>
+    <title>Seite 4</title>
     <style>
         body {
             background-color: #f9f9f9;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
             flex-direction: column;
             font-family: Arial, sans-serif;
             color: #333;
+            height: 100vh;
         }
-        h1 {
-            margin-bottom: 15px;
-        }
-        p {
-            margin-bottom: 25px;
+        .content {
+            text-align: center;
             font-size: 18px;
+            margin-bottom: 20px;
         }
         button {
-            padding: 15px 30px;
-            font-size: 18px;
+            padding: 15px 25px;
+            font-size: 16px;
             border: none;
             border-radius: 5px;
             background-color: #28a745;
@@ -35,19 +33,18 @@
         button:hover {
             background-color: #218838;
         }
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
     </style>
+    <script>
+        function goBack() {
+            window.location.href = 'index.html';
+        }
+    </script>
 </head>
 <body>
-    <h1>Informationen zu Funkmast 4</h1>
-    <p><a href="https://www.deutschland-spricht-ueber-5g.de/informieren/mobilfunktechnik/alles-zum-mobilfunkmast/">
-    Mehr Informationen zum Mobilfunkmast</a></p>
-    <button onclick="window.location.href='index.html'">Zurück zur Hauptseite</button>
+    <div class="content">
+        <h1>Seite 4</h1>
+        <p>Dies ist die Aufgabe 4. Bitte bearbeiten Sie die Aufgabe gemäß der Anweisung.</p>
+    </div>
+    <button onclick="goBack()">Zurück zur Hauptseite</button>
 </body>
 </html>
