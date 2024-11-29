@@ -74,6 +74,12 @@
             border-radius: 5px;
             resize: none;
         }
+        .word-counter {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #555;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
@@ -94,7 +100,11 @@
         <div class="notes">
             <h2>Notizen</h2>
             <textarea id="notes" placeholder="Hier können Sie Ihre Notizen machen..."></textarea>
+            <div class="word-counter">
+                Wörter: <span id="wordCount">0</span>
+            </div>
         </div>
+        <button id="saveNotes">Notizen speichern</button>
         <footer>
             <p>Hinweis: Um die Quellen im Detail zu lesen, klicken Sie auf die Buttons. Kehren Sie anschließend mit dem Zurück-Button Ihres Browsers zur Übersicht zurück.</p>
         </footer>
@@ -102,18 +112,39 @@
 
     <script>
         const notesField = document.getElementById('notes');
+        const wordCountSpan = document.getElementById('wordCount');
 
         // Beim Laden der Seite den gespeicherten Wert wiederherstellen
         window.onload = function () {
             const savedNotes = localStorage.getItem('userNotes');
             if (savedNotes) {
                 notesField.value = savedNotes;
+                updateWordCount(savedNotes); // Wörter zählen
             }
         };
 
-        // Änderungen im Textfeld speichern
+        // Änderungen im Textfeld speichern und Wörter zählen
         notesField.addEventListener('input', function () {
-            localStorage.setItem('userNotes', notesField.value);
+            const text = notesField.value;
+            localStorage.setItem('userNotes', text);
+            updateWordCount(text);
+        });
+
+        // Wörterzähler aktualisieren
+        function updateWordCount(text) {
+            const wordCount = text.trim().split(/\s+/).filter(word => word.length > 0).length;
+            wordCountSpan.textContent = wordCount;
+        }
+
+        // Tracking-Daten als Datei speichern
+        document.getElementById('saveNotes').addEventListener('click', function () {
+            const notes = localStorage.getItem('userNotes') || '';
+            const blob = new Blob([notes], { type: 'text/plain' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'Notizen.txt';
+            a.click();
+            URL.revokeObjectURL(a.href);
         });
     </script>
 </body>
