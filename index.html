@@ -113,6 +113,7 @@
     <script>
         const notesField = document.getElementById('notes');
         const wordCountSpan = document.getElementById('wordCount');
+        const trackingData = []; // Array zum Speichern der zeitlichen Änderungen
 
         // Beim Laden der Seite den gespeicherten Wert wiederherstellen
         window.onload = function () {
@@ -121,6 +122,9 @@
                 notesField.value = savedNotes;
                 updateWordCount(savedNotes); // Wörter zählen
             }
+
+            // Starte das Tracking
+            startTracking();
         };
 
         // Änderungen im Textfeld speichern und Wörter zählen
@@ -136,13 +140,29 @@
             wordCountSpan.textContent = wordCount;
         }
 
-        // Tracking-Daten als Datei speichern
+        // Tracking-Funktion
+        function startTracking() {
+            setInterval(() => {
+                const timestamp = new Date().toISOString();
+                const text = notesField.value;
+                trackingData.push({ timestamp, textLength: text.length });
+            }, 1000 / 60); // 60 Mal pro Sekunde
+        }
+
+        // Notizen und Tracking-Daten als Datei speichern
         document.getElementById('saveNotes').addEventListener('click', function () {
             const notes = localStorage.getItem('userNotes') || '';
-            const blob = new Blob([notes], { type: 'text/plain' });
+            let fileContent = "### Notizen ###\n\n";
+            fileContent += notes + "\n\n";
+            fileContent += "### Zeichenentwicklung ###\n\n";
+            trackingData.forEach(entry => {
+                fileContent += `${entry.timestamp}: Zeichenanzahl = ${entry.textLength}\n`;
+            });
+
+            const blob = new Blob([fileContent], { type: 'text/plain' });
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
-            a.download = 'Notizen.txt';
+            a.download = 'Notizen_und_Tracking.txt';
             a.click();
             URL.revokeObjectURL(a.href);
         });
