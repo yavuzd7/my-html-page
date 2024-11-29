@@ -61,6 +61,19 @@
             margin-bottom: 10px;
             color: #007bff;
         }
+        .notes {
+            margin-top: 20px;
+            text-align: left;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
     </style>
 </head>
 <body>
@@ -71,16 +84,37 @@
             <p>Um nach der Nutzung einer Quelle zum Hauptmenü zurückzukehren, nutzen Sie bitte die Zurück-Funktion Ihres Browsers.</p>
             <p>Die zur Verfügung stehenden Quellen umfassen wichtige Informationen zu Mobilfunkmasten und deren Auswirkungen. Bitte stellen Sie sicher, dass Sie alle Quellen durchgehen, um Ihre Aufgaben bestmöglich zu bearbeiten.</p>
         </div>
-            <div class="button-container">
-                <button onclick="window.open('https://www.deutschland-spricht-ueber-5g.de/informieren/mobilfunktechnik/alles-zum-mobilfunkmast/', '_blank')">Funkmast 1</button>
-                <button onclick="window.location.href='https://www.bfs.de/DE/themen/emf/mobilfunk/mobilfunk_node.html'">Funkmast 2</button>
-                <button onclick="window.location.href='https://www.quarks.de/gesundheit/handystrahlung-wie-gefaehrlich-ist-das-neue-mobilfunknetz-5g/'">Funkmast 3</button>
-                <button onclick="window.location.href='https://www.zentrum-der-gesundheit.de/bibliothek/umwelt/strahlung/mobilfunkstrahlung-ia'">Funkmast 4</button>
-                <button onclick="window.location.href='https://www.tagesspiegel.de/potsdam/landeshauptstadt/geplanter-mobilfunkmast-anwohner-aus-grube-zeigen-sich-skeptisch-gegenuber-5g-netzausbau-11910113.html'">Funkmast 5</button>
-            </div>
+        <div class="button-container">
+            <button onclick="window.open('https://www.deutschland-spricht-ueber-5g.de/informieren/mobilfunktechnik/alles-zum-mobilfunkmast/', '_blank')">Funkmast 1</button>
+            <button onclick="window.location.href='https://www.bfs.de/DE/themen/emf/mobilfunk/mobilfunk_node.html'">Funkmast 2</button>
+            <button onclick="window.location.href='https://www.quarks.de/gesundheit/handystrahlung-wie-gefaehrlich-ist-das-neue-mobilfunknetz-5g/'">Funkmast 3</button>
+            <button onclick="window.location.href='https://www.zentrum-der-gesundheit.de/bibliothek/umwelt/strahlung/mobilfunkstrahlung-ia'">Funkmast 4</button>
+            <button onclick="window.location.href='https://www.tagesspiegel.de/potsdam/landeshauptstadt/geplanter-mobilfunkmast-anwohner-aus-grube-zeigen-sich-skeptisch-gegenuber-5g-netzausbau-11910113.html'">Funkmast 5</button>
+        </div>
+        <div class="notes">
+            <h2>Notizen</h2>
+            <textarea id="notes" placeholder="Hier können Sie Ihre Notizen machen..."></textarea>
+        </div>
         <footer>
             <p>Hinweis: Um die Quellen im Detail zu lesen, klicken Sie auf die Buttons. Kehren Sie anschließend mit dem Zurück-Button Ihres Browsers zur Übersicht zurück.</p>
         </footer>
     </div>
+
+    <script>
+        const notesField = document.getElementById('notes');
+
+        // Beim Laden der Seite den gespeicherten Wert wiederherstellen
+        window.onload = function () {
+            const savedNotes = localStorage.getItem('userNotes');
+            if (savedNotes) {
+                notesField.value = savedNotes;
+            }
+        };
+
+        // Änderungen im Textfeld speichern
+        notesField.addEventListener('input', function () {
+            localStorage.setItem('userNotes', notesField.value);
+        });
+    </script>
 </body>
 </html>
