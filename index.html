@@ -80,6 +80,17 @@
             color: #555;
             text-align: left;
         }
+        #iframe-container {
+            width: 100%;
+            height: 80vh;
+            margin-top: 20px;
+            display: none;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #ccc;
+        }
     </style>
 </head>
 <body>
@@ -87,16 +98,21 @@
         <h1 class="title">Test Tobii (Links zu 5 Webseiten)</h1>
         <div class="instruction">
             <p>Im Rahmen dieser Übung haben Sie Zugriff auf fünf verschiedene Quellen, die Ihnen helfen, die Aufgaben zu bearbeiten. Bitte navigieren Sie durch die Quellen, indem Sie auf die entsprechenden Buttons unten klicken. Sie gelangen dann direkt zur ausgewählten Quelle.</p>
-            <p>Um nach der Nutzung einer Quelle zum Hauptmenü zurückzukehren, nutzen Sie bitte die Zurück-Funktion Ihres Browsers.</p>
             <p>Die zur Verfügung stehenden Quellen umfassen wichtige Informationen zu Mobilfunkmasten und deren Auswirkungen. Bitte stellen Sie sicher, dass Sie alle Quellen durchgehen, um Ihre Aufgaben bestmöglich zu bearbeiten.</p>
         </div>
         <div class="button-container">
-            <button onclick="openRestrictedPage('https://www.deutschland-spricht-ueber-5g.de/informieren/mobilfunktechnik/alles-zum-mobilfunkmast/')">Funkmast 1</button>
-            <button onclick="openRestrictedPage('https://www.bfs.de/DE/themen/emf/mobilfunk/mobilfunk_node.html')">Funkmast 2</button>
-            <button onclick="openRestrictedPage('https://www.quarks.de/gesundheit/handystrahlung-wie-gefaehrlich-ist-das-neue-mobilfunknetz-5g/')">Funkmast 3</button>
-            <button onclick="openRestrictedPage('https://www.zentrum-der-gesundheit.de/bibliothek/umwelt/strahlung/mobilfunkstrahlung-ia')">Funkmast 4</button>
-            <button onclick="openRestrictedPage('https://www.tagesspiegel.de/potsdam/landeshauptstadt/geplanter-mobilfunkmast-anwohner-aus-grube-zeigen-sich-skeptisch-gegenuber-5g-netzausbau-11910113.html')">Funkmast 5</button>
+            <button onclick="loadPage('https://www.deutschland-spricht-ueber-5g.de/informieren/mobilfunktechnik/alles-zum-mobilfunkmast/')">Funkmast 1</button>
+            <button onclick="loadPage('https://www.bfs.de/DE/themen/emf/mobilfunk/mobilfunk_node.html')">Funkmast 2</button>
+            <button onclick="loadPage('https://www.quarks.de/gesundheit/handystrahlung-wie-gefaehrlich-ist-das-neue-mobilfunknetz-5g/')">Funkmast 3</button>
+            <button onclick="loadPage('https://www.zentrum-der-gesundheit.de/bibliothek/umwelt/strahlung/mobilfunkstrahlung-ia')">Funkmast 4</button>
+            <button onclick="loadPage('https://www.tagesspiegel.de/potsdam/landeshauptstadt/geplanter-mobilfunkmast-anwohner-aus-grube-zeigen-sich-skeptisch-gegenuber-5g-netzausbau-11910113.html')">Funkmast 5</button>
         </div>
+
+        <!-- Iframe für die Webseite -->
+        <div id="iframe-container">
+            <iframe id="pageFrame" src=""></iframe>
+        </div>
+
         <div class="notes">
             <h2>Notizen</h2>
             <textarea id="notes" placeholder="Hier können Sie Ihre Notizen machen..."></textarea>
@@ -106,26 +122,26 @@
         </div>
         <button id="saveNotes">Notizen speichern</button>
         <footer>
-            <p>Hinweis: Um die Quellen im Detail zu lesen, klicken Sie auf die Buttons. Kehren Sie anschließend mit dem Zurück-Button Ihres Browsers zur Übersicht zurück.</p>
+            <p>Hinweis: Die Seiten sind innerhalb des Rahmens eingeschränkt. Externe Links sind deaktiviert.</p>
         </footer>
     </div>
 
     <script>
         const notesField = document.getElementById('notes');
         const wordCountSpan = document.getElementById('wordCount');
+        const trackingData = [];
 
+        // Beim Laden der Seite gespeicherte Notizen wiederherstellen
         window.onload = function () {
             const savedNotes = localStorage.getItem('userNotes');
             if (savedNotes) {
                 notesField.value = savedNotes;
                 updateWordCount(savedNotes);
             }
-            history.pushState(null, null, location.href);
-            window.onpopstate = function () {
-                history.go(1);
-            };
+            startTracking();
         };
 
+        // Notizen speichern und Wortanzahl aktualisieren
         notesField.addEventListener('input', function () {
             const text = notesField.value;
             localStorage.setItem('userNotes', text);
@@ -137,36 +153,50 @@
             wordCountSpan.textContent = wordCount;
         }
 
+        function startTracking() {
+            setInterval(() => {
+                const timestamp = new Date().toISOString();
+                const text = notesField.value;
+                trackingData.push({ timestamp, textLength: text.length });
+            }, 1000);
+        }
+
+        function loadPage(url) {
+            document.getElementById("iframe-container").style.display = "block";
+            const frame = document.getElementById("pageFrame");
+            frame.src = url;
+
+            frame.onload = function() {
+                try {
+                    const frameDoc = frame.contentDocument || frame.contentWindow.document;
+                    if (frameDoc) {
+                        const links = frameDoc.getElementsByTagName("a");
+                        for (let link of links) {
+                            link.removeAttribute("href");
+                            link.style.pointerEvents = "none";
+                            link.style.color = "gray";
+                        }
+                    }
+                } catch (e) {
+                    console.warn("Externe Seiten verhindern Link-Entfernung aufgrund von CORS.");
+                }
+            };
+        }
+
         document.getElementById('saveNotes').addEventListener('click', function () {
             const notes = localStorage.getItem('userNotes') || '';
-            const blob = new Blob([notes], { type: 'text/plain' });
+            let fileContent = "### Notizen ###\n\n" + notes + "\n\n### Zeichenentwicklung ###\n\n";
+            trackingData.forEach(entry => {
+                fileContent += `${entry.timestamp}: Zeichenanzahl = ${entry.textLength}\n`;
+            });
+
+            const blob = new Blob([fileContent], { type: 'text/plain' });
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
-            a.download = 'Notizen.txt';
+            a.download = 'Notizen_und_Tracking.txt';
             a.click();
             URL.revokeObjectURL(a.href);
         });
-
-        function openRestrictedPage(url) {
-            const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
-
-            if (newWindow) {
-                newWindow.onload = function () {
-                    newWindow.document.querySelectorAll('a').forEach(link => {
-                        link.addEventListener('click', function (event) {
-                            event.preventDefault();
-                        });
-                    });
-
-                    newWindow.history.pushState(null, null, newWindow.location.href);
-                    newWindow.onpopstate = function () {
-                        newWindow.history.go(1);
-                    };
-                };
-            } else {
-                alert('Pop-ups sind blockiert! Bitte erlauben Sie Pop-ups für diese Seite.');
-            }
-        }
     </script>
 </body>
 </html>
