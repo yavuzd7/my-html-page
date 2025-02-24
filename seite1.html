@@ -206,7 +206,7 @@
             fileContent += notes + "\n\n";
             fileContent += "### Zeichenentwicklung ###\n\n";
             trackingData.forEach(entry => {
-                fileContent += ${entry.timestamp}: Zeichenanzahl = ${entry.textLength}\n;
+                fileContent += `${entry.timestamp}: Zeichenanzahl = ${entry.textLength}\n`;
             });
 
             const blob = new Blob([fileContent], { type: 'text/plain' });
