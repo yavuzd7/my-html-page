@@ -23,7 +23,13 @@
             padding: 40px;
             max-width: 900px;
             text-align: center;
+            width: 90%;  /* Statt fester Breite flexibler */
+            margin: 40px auto; /* Abstand nach oben und zentriert horizontal */
         }
+
+
+
+
         .instruction {
             margin-bottom: 30px;
             font-size: 18px;
@@ -80,6 +86,19 @@
             color: #555;
             text-align: left;
         }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 150px 20px 120px; /* Mehr Abstand nach oben */
+            min-height: 100vh;
+            overflow: visible;
+        }
+
+
+
+
     </style>
 </head>
 <body>
