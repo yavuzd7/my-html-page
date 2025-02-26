@@ -3,48 +3,271 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seite 2</title>
+    <title>Aufgabenübersicht</title>
     <style>
         body {
-            background-color: #f9f9f9;
+            background-color: #f4f6f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            font-family: Arial, sans-serif;
-            color: #333;
+            padding: 20px;
             height: 100vh;
+            color: #333;
         }
-        .content {
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 900px;
             text-align: center;
-            font-size: 18px;
-            margin-bottom: 20px;
+            width: 90%;  /* Statt fester Breite flexibler */
+            margin: 40px auto; /* Abstand nach oben und zentriert horizontal */
+        }
+
+
+        .instruction, .instruction-text, .instruction-content p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555;
+}
+
+
+        .instruction {
+    text-align: left; 
+    max-width: 900px;
+    margin: 0 auto; 
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.instruction-content {
+    display: grid;
+    grid-template-columns: 200px 1fr; /* Bild nimmt 200px, Rest geht an den Text */
+    align-items: start;
+    gap: 20px; /* Abstand zwischen Bild und Text */
+}
+
+.instruction-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
         }
         button {
             padding: 15px 25px;
             font-size: 16px;
-            border: none;
+            border: 2px solid #007bff;
             border-radius: 5px;
-            background-color: #28a745;
+            background-color: #007bff;
             color: white;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
         }
         button:hover {
-            background-color: #218838;
+            background-color: #0056b3;
+            transform: scale(1.05);
+            box-shadow: 0px 4px 8px rgba(0, 91, 187, 0.3);
         }
+        footer {
+            margin-top: 40px;
+            font-size: 14px;
+            color: #888;
+        }
+        .title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+        .notes {
+            margin-top: 20px;
+            text-align: left;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+        .word-counter {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #555;
+            text-align: left;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 400px 20px 400px; /* Mehr Abstand nach oben */
+            min-height: 100vh;
+            overflow: visible;
+        }
+
+        
+        .image-container {
+    display: flex;
+    flex-direction: column; /* Bilder untereinander */
+    align-items: flex-start; /* Bilder linksbündig ausrichten */
+    gap: 15px; /* Abstand zwischen den Bildern */
+    margin-top: 20px;
+    width: 100%; /* Sicherstellen, dass der Container die volle Breite nutzt */
+}
+
+.link-image {
+    width: 500px; /* Größe der Thumbnails */
+    height: auto;
+    border-radius: 8px; /* Abgerundete Ecken */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.link-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+
+}
+
+
+
+
+
+
     </style>
-    <script>
-        function goBack() {
-            window.location.href = 'index.html';
-        }
-    </script>
 </head>
 <body>
-    <div class="content">
-        <h1>Seite 2</h1>
-        <p>Dies ist die Aufgabe 2. Bitte bearbeiten Sie die Aufgabe gemäß der Anweisung.</p>
-    </div>
-    <button onclick="goBack()">Zurück zur Hauptseite</button>
+    <div class="container">
+        <h1 class="title">Tetrapak GEN</h1>
+        <div class="instruction">
+            <div class="instruction-content">
+                <img src="Tetrapak-2.PNG" alt="Tetrapak Recycling" class="instruction-image">
+                <div class="instruction-text">
+                    <p><b>Vergegenwärtigen Sie sich für die nächste Aufgabe noch einmal kurz den Ausgangspunkt der Recherche:</b></p>
+                    <p>
+                        Sie wohnen in einer Wohngemeinschaft und haben den letzten Schluck Milch aus einem Tetra Pak getrunken. 
+                        Die Verpackung werfen Sie in den Verpackungsmüll. Ihr Mitbewohner kommentiert hierzu, dass Sie sich das auch sparen könnten,
+                        weil Tetra Paks kaum recycelt werden. Im Zuge der hierauf folgenden Diskussion wollen Sie durch eine Internetsuche prüfen, inwieweit Tetra Paks tatsächlich recycelt werden.
+                    </p>
+                </div>
+            </div>
+            
+            <p><b>Während Ihrer Suche finden Sie fünf Webseiten, die Sie sich genauer ansehen.</b></p>
+            <p>Bitte klicken Sie die angezeigten Webseiten an, um sie aufzurufen.</p>
+            
+            <p><b>Hinweis:</b> Bei den verlinkten Webseiten handelt es sich um Archiv-Versionen. Damit wird sichergestellt, dass Sie den gleichen Inhalt
+                sehen wie alle anderen Teilnehmenden. Der Inhalt der Archiv-Versionen entspricht dem der tatsächlichen Webseiten.
+            </p>
+        </div>
+                        
+
+        <!-- Hier bleiben die Buttons unverändert -->
+        <div class="image-container">
+            <a href="https://webarchive.core.texttechnologylab.org/archive/a01_cis/affc6f4500fa968f3bfa39b4449bfbf7a238f7b6.html" target="_blank">
+                <img src="tetra_images/3-2.PNG" alt="Labelprint24" class="link-image">
+            </a>
+            <a href="https://webarchive.core.texttechnologylab.org/archive/a01_cis/bac907f412ca7ecf7bfe5cb636501a1012a23f24.html" target="_blank">
+                <img src="tetra_images/2-2.PNG" alt="MDR" class="link-image">
+            </a>
+            <a href="https://webarchive.core.texttechnologylab.org/archive/a01_cis/7de7f32c86bfa8d75a9c1a63c0e14716fc234829.html" target="_blank">
+                <img src="tetra_images/4-2.PNG" alt="Deutsche Umwelthilfe" class="link-image">
+            </a>
+            <a href="https://webarchive.core.texttechnologylab.org/archive/a01_cis/72e895ae630e59e5bac55430e2ad1b5aa5524c61.html" target="_blank">
+                <img src="tetra_images/1-2.PNG" alt="Umweltretter" class="link-image">
+            </a>
+            <a href="https://webarchive.core.texttechnologylab.org/archive/a01_cis/fbb061ce1a69ae8c6ead24127960173f1a81b079.html" target="_blank">
+                <img src="tetra_images/5-2.PNG" alt="The Oater" class="link-image">
+            </a>
+        </div>
+        <p>
+            <b>Bitte schreiben Sie nun auf Grundlage der gefundenen Webseiten eine kurze Stellungnahme, inwieweit Tetra Paks recycelt werden.</b>
+            Ihre Stellungnahme (150 bis 300 Wörter):
+                        </p>
+        
+        <div class="notes">
+            <h2>Notizen</h2>
+            <textarea id="notes" placeholder="Hier können Sie Ihre Notizen machen..."></textarea>
+            <div class="word-counter">
+                Wörter: <span id="wordCount">0</span>
+            </div>
+        </div>
+        <button id="saveNotes">Notizen speichern</button>
+        <footer>
+            <p>Hinweis: Um die Quellen im Detail zu lesen, klicken Sie auf die Buttons. Kehren Sie anschließend mit dem Zurück-Button Ihres Browsers zur Übersicht zurück.</p>
+        </footer>
+
+    <script>
+        const notesField = document.getElementById('notes');
+        const wordCountSpan = document.getElementById('wordCount');
+        const trackingData = []; // Array zum Speichern der zeitlichen Änderungen
+
+        // Beim Laden der Seite den gespeicherten Wert wiederherstellen
+        window.onload = function () {
+            const savedNotes = localStorage.getItem('userNotes');
+            if (savedNotes) {
+                notesField.value = savedNotes;
+                updateWordCount(savedNotes); // Wörter zählen
+            }
+
+            // Starte das Tracking
+            startTracking();
+        };
+
+        // Änderungen im Textfeld speichern und Wörter zählen
+        notesField.addEventListener('input', function () {
+            const text = notesField.value;
+            localStorage.setItem('userNotes', text);
+            updateWordCount(text);
+        });
+
+        // Wörterzähler aktualisieren
+        function updateWordCount(text) {
+            const wordCount = text.trim().split(/\s+/).filter(word => word.length > 0).length;
+            wordCountSpan.textContent = wordCount;
+        }
+
+        // Tracking-Funktion
+        function startTracking() {
+            setInterval(() => {
+                const timestamp = new Date().toISOString();
+                const text = notesField.value;
+                trackingData.push({ timestamp, textLength: text.length });
+            }, 1000 / 60); // 60 Mal pro Sekunde
+        }
+
+        // Notizen und Tracking-Daten als Datei speichern
+        document.getElementById('saveNotes').addEventListener('click', function () {
+            const notes = localStorage.getItem('userNotes') || '';
+            let fileContent = "### Notizen ###\n\n";
+            fileContent += notes + "\n\n";
+            fileContent += "### Zeichenentwicklung ###\n\n";
+            trackingData.forEach(entry => {
+                fileContent += `${entry.timestamp}: Zeichenanzahl = ${entry.textLength}\n`;
+            });
+
+            const blob = new Blob([fileContent], { type: 'text/plain' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'Notizen_und_Tracking.txt';
+            a.click();
+            URL.revokeObjectURL(a.href);
+        });
+    </script>
 </body>
 </html>
+
