@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aufgabenübersicht</title>
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 900px;
+            text-align: center;
+            width: 90%;  /* Statt fester Breite flexibler */
+            margin: 40px auto; /* Abstand nach oben und zentriert horizontal */
+        }
+
+
+        .instruction, .instruction-text, .instruction-content p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555;
+}
+
+
+        .instruction {
+    text-align: left; 
+    max-width: 900px;
+    margin: 0 auto; 
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.instruction-content {
+    display: block; /* Kein Grid mehr, damit der Text normal fließt */
+    text-align: left;
+}
+
+
+.instruction-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        button {
+            padding: 15px 25px;
+            font-size: 16px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+            box-shadow: 0px 4px 8px rgba(0, 91, 187, 0.3);
+        }
+        footer {
+            margin-top: 40px;
+            font-size: 14px;
+            color: #888;
+        }
+        .title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+        .notes {
+            margin-top: 20px;
+            text-align: left;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+        .word-counter {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #555;
+            text-align: left;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 700px 20px 700px; /* Mehr Abstand nach oben */
+            min-height: 100vh;
+            overflow: visible;
+        }
+
+        
+        .image-container {
+    display: flex;
+    flex-direction: column; /* Bilder untereinander */
+    align-items: flex-start; /* Bilder linksbündig ausrichten */
+    gap: 15px; /* Abstand zwischen den Bildern */
+    margin-top: 20px;
+    width: 100%; /* Sicherstellen, dass der Container die volle Breite nutzt */
+}
+
+.link-image {
+    width: 500px; /* Größe der Thumbnails */
+    height: auto;
+    border-radius: 8px; /* Abgerundete Ecken */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.link-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+
+}
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Kreislauf GEN Practical</h1>
+        <div class="instruction">
+            <p>Vergegenwärtigen Sie sich den Ausgangspunkt der Recherche:</p>
+            <img style="float: left; margin-right: 20px;" src="tetra_images/4.jpg" width="200" alt="Spinnenbiss Szenario">
+            <p>
+                Sie sind Medizinstudent*in und werden nach einem Anatomietestat von einer Kommilitonin zu einer Hausparty eingeladen. Die Stimmung im Partykeller 
+                ist ausgelassen, als plötzlich die Musik ausgeht. Es wird getuschelt und Sie erfahren, dass Ihre Freundin Emma von einer Spinne gebissen wurde. 
+                Um Emma versammelt sich eine Gruppe von Mitstudierenden und alle rätseln, was für eine Art von Spinne zerquetscht neben Emmas Wade liegt. 
+                Die meisten glauben, dass es sich um die Nosferatu-Spinne handelt.
+
+                Währenddessen wird es Emma zunehmend schwindelig. Sie fühlt sich schwach, ist kaltschweißig und wirkt verängstigt. 
+                Darüber hinaus klagt sie über ein Kloßgefühl im Hals. Sie beobachten eine sich rasch entwickelnde flächige Rötung der Haut mit Quaddelbildung.
+                Sie messen palpatorisch einen Puls von 120/min und zählen eine Atemfrequenz von 24/min. Da sich Emmas Allgemeinzustand weiter zu
+                verschlechtern scheint, beschließen Sie, ärztliche Hilfe zu rufen.
+                
+                Während Sie auf den Notarzt warten, recherchieren Sie im Internet, was die Gründe für den Zustand Ihrer Freundin sein könnten.            </p>
+            <p>
+                <b>Während Ihrer Suche finden Sie fünf Webseiten, die Sie sich genauer ansehen.</b>
+
+                <br>Bitte klicken Sie die angezeigten Webseiten an, um sie aufzurufen. Sie öffnen sich in neuen Tabs Ihres Browsers.
+                
+                <br><br><b>Hinweis:</b> Bei den verlinkten Webseiten handelt es sich um Archiv-Versionen. Damit wird sichergestellt, dass Sie den gleichen Inhalt
+                sehen wie alle anderen Teilnehmenden. Der Inhalt der Archiv-Versionen entspricht dem der tatsächlichen Webseiten.
+                
+                <br><b>Wichtig:</b> Sie befinden sich <b>nicht</b> im offenen Internet. Von den unten angegebenen Webseiten aus können Sie weitere Links öffnen,
+                jedoch anschließend nicht weiter, sondern nur zurück auf die ursprüngliche Webseite navigieren. Sie können also beispielsweise
+                die Homepage aufrufen, aber keine Google-Suche starten. Es erscheint ein Hinweisfenster, wenn Sie an das Ende der möglichen Verlinkungstiefe stoßen.            </p>
+ 
+        </div>
+                        
+
+        <!-- Hier bleiben die Buttons unverändert -->
+        <div class="image-container">
+            <a href="https://webarchive.core.texttechnologylab.org/archive/kreislauf_med/046cbd85aa784521a318fd312d8ab1ba3eda3c0c.html" target="_blank">
+                <img src="images/Schaedlingshero.png" alt="Labelprint24" class="link-image">
+            </a>
+            <a href="https://webarchive.core.texttechnologylab.org/archive/kreislauf_med/839399aac87ad88843ac55431893252962bc6d9c.html" target="_blank">
+                <img src="images/allergieinformationsdienst.png" alt="MDR" class="link-image">
+            </a>
+            <a href="https://webarchive.core.texttechnologylab.org/archive/kreislauf_med/19c93bcd07785f0662cf4e402063e1867ab80133.html" target="_blank">
+                <img src="images/tk_allergie.png" alt="Deutsche Umwelthilfe" class="link-image">
+            </a>
+            <a href="https://webarchive.core.texttechnologylab.org/archive/kreislauf_med/2d8d68a1f9138e1476fe5ef8396600cadff47272.html" target="_blank">
+                <img src="images/BerlinerMorgenpost.png" alt="Umweltretter" class="link-image">
+            </a>
+            <a href="https://webarchive.core.texttechnologylab.org/archive/kreislauf_med/3c11b47869efbdc64df90ae8bbc606922a6b507d.html" target="_blank">
+                <img src="images/gesundheit.gv.allergie.png" alt="The Oater" class="link-image">
+            </a>
+        </div>
+        <p>
+            <p style="text-align: left;">
+                <b>Bitte schreiben Sie nun auf Grundlage der gefundenen Webseiten eine kurze Stellungnahme welche Diagnosen hier in Frage kommen
+                    und welche Ihrer Meinung nach hier die wahrscheinlichste ist. Welche Organe/Systeme sind betroffen und welche Symptome gehen 
+                    typischerweise damit einher? Welche Therapien sollten zügig eingeleitet werden?</b>
+                    
+                       </p>
+            
+            
+                        </p>
+        
+        <div class="notes">
+            <h3><b>Ihre Stellungnahme</b> <span style="font-weight: normal;">(150 bis 300 Wörter):</span></h3>
+            <textarea id="notes" placeholder="Hier können Sie Ihre Notizen machen..."></textarea>
+            <div class="word-counter">
+                Wörter: <span id="wordCount">0</span>
+            </div>
+        </div>
+        <button id="saveNotes">Notizen speichern</button>
+        <footer>
+            <div style="
+                border: 2px solid red; 
+                border-radius: 8px; 
+                background-color: #ffe6e6; 
+                padding: 15px; 
+                text-align: center; 
+                font-size: 16px;
+                max-width: 600px;
+                margin: 20px auto;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+                
+                <p style="color: #333; margin: 0;">
+                    Wenn Sie sicher sind, dass Sie mit der Aufgabe fertig sind und Ihre Stellungnahme vollständig ist,  
+                    <span style="color: red; font-weight: bold;">kopieren</span> Sie den Text mit  
+                    <span style="color: red; font-weight: bold;">Strg + C</span>  
+                    und drücken Sie anschließend  
+                    <span style="color: red; font-weight: bold;">F10</span>.
+                </p>
+            </div>
+        </footer>
+        
+
+    <script>
+        const notesField = document.getElementById('notes');
+        const wordCountSpan = document.getElementById('wordCount');
+        const trackingData = []; // Array zum Speichern der zeitlichen Änderungen
+
+        // Beim Laden der Seite den gespeicherten Wert wiederherstellen
+        window.onload = function () {
+            const savedNotes = localStorage.getItem('userNotes');
+            if (savedNotes) {
+                notesField.value = savedNotes;
+                updateWordCount(savedNotes); // Wörter zählen
+            }
+
+            // Starte das Tracking
+            startTracking();
+        };
+
+        // Änderungen im Textfeld speichern und Wörter zählen
+        notesField.addEventListener('input', function () {
+            const text = notesField.value;
+            localStorage.setItem('userNotes', text);
+            updateWordCount(text);
+        });
+
+        // Wörterzähler aktualisieren
+        function updateWordCount(text) {
+            const wordCount = text.trim().split(/\s+/).filter(word => word.length > 0).length;
+            wordCountSpan.textContent = wordCount;
+        }
+
+        // Tracking-Funktion
+        function startTracking() {
+            setInterval(() => {
+                const timestamp = new Date().toISOString();
+                const text = notesField.value;
+                trackingData.push({ timestamp, textLength: text.length });
+            }, 1000 / 60); // 60 Mal pro Sekunde
+        }
+
+        // Notizen und Tracking-Daten als Datei speichern
+        document.getElementById('saveNotes').addEventListener('click', function () {
+            const notes = localStorage.getItem('userNotes') || '';
+            let fileContent = "### Notizen ###\n\n";
+            fileContent += notes + "\n\n";
+            fileContent += "### Zeichenentwicklung ###\n\n";
+            trackingData.forEach(entry => {
+                fileContent += `${entry.timestamp}: Zeichenanzahl = ${entry.textLength}\n`;
+            });
+
+            const blob = new Blob([fileContent], { type: 'text/plain' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'Notizen_und_Tracking.txt';
+            a.click();
+            URL.revokeObjectURL(a.href);
+        });
+    </script>
+</body>
+</html>
+
