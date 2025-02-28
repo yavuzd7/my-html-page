@@ -156,7 +156,7 @@
         <h1 class="title">Tetrapak GEN</h1>
         <div class="instruction">
             <div class="instruction-content">
-                <img src="images/Tetrapak.PNG" alt="Tetrapak Recycling" class="instruction-image">
+                <img src="images/Tetrapak-2.PNG" alt="Tetrapak Recycling" class="instruction-image">
                 <div class="instruction-text">
                     <p><b>Vergegenwärtigen Sie sich für die nächste Aufgabe noch einmal kurz den Ausgangspunkt der Recherche:</b></p>
                     <p>
@@ -194,13 +194,13 @@
                 <img src="images/5-2.PNG" alt="The Oater" class="link-image">
             </a>
         </div>
-        <p>
+        <p style="text-align: left;">
             <b>Bitte schreiben Sie nun auf Grundlage der gefundenen Webseiten eine kurze Stellungnahme, inwieweit Tetra Paks recycelt werden.</b>
-            Ihre Stellungnahme (150 bis 300 Wörter):
+            
                         </p>
         
         <div class="notes">
-            <h2>Notizen</h2>
+            <h3><b>Ihre Stellungnahme</b> <span style="font-weight: normal;">(150 bis 300 Wörter):</span></h3>
             <textarea id="notes" placeholder="Hier können Sie Ihre Notizen machen..."></textarea>
             <div class="word-counter">
                 Wörter: <span id="wordCount">0</span>
@@ -208,9 +208,26 @@
         </div>
         <button id="saveNotes">Notizen speichern</button>
         <footer>
-            <p>Hinweis: Um die Quellen im Detail zu lesen, klicken Sie auf die Buttons. Kehren Sie anschließend mit dem Zurück-Button Ihres Browsers zur Übersicht zurück.</p>
+            <div style="
+                border: 2px solid red; 
+                border-radius: 8px; 
+                background-color: #ffe6e6; 
+                padding: 15px; 
+                text-align: center; 
+                font-size: 16px;
+                max-width: 600px;
+                margin: 20px auto;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+                
+                <p style="color: #333; margin: 0;">
+                    Wenn Sie sicher sind, dass Sie mit der Aufgabe fertig sind und Ihre Stellungnahme vollständig ist,  
+                    <span style="color: red; font-weight: bold;">kopieren</span> Sie den Text mit  
+                    <span style="color: red; font-weight: bold;">Strg + C</span>  
+                    und drücken Sie anschließend  
+                    <span style="color: red; font-weight: bold;">F10</span>.
+                </p>
+            </div>
         </footer>
-
     <script>
         const notesField = document.getElementById('notes');
         const wordCountSpan = document.getElementById('wordCount');
@@ -270,3 +287,4 @@
     </script>
 </body>
 </html>
+
