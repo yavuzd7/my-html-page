@@ -113,7 +113,7 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            padding: 600px 20px 400px; /* Mehr Abstand nach oben */
+            padding: 700px 20px 700px; /* Mehr Abstand nach oben */
             min-height: 100vh;
             overflow: visible;
         }
@@ -196,15 +196,15 @@
             </a>
         </div>
         <p>
-            <b>Bitte schreiben Sie nun auf Grundlage der gefundenen Webseiten eine kurze, prägnante Stellungnahme für die Ihnen vorgesetzte Journalistin, in der Sie die zentralen Argumente für oder gegen einen Streik der Pilotengewerkschaft nennen.
+            <p style="text-align: left;">
+                <b>Bitte schreiben Sie nun auf Grundlage der gefundenen Webseiten eine kurze, prägnante Stellungnahme für die Ihnen vorgesetzte Journalistin, in der Sie die zentralen Argumente für oder gegen einen Streik der Pilotengewerkschaft nennen.</b>
+            </p>
             
-            </b>
-            <br>
-            Ihre Stellungnahme (150 bis 300 Wörter):
+            
                         </p>
         
         <div class="notes">
-            <h2>Notizen</h2>
+            <h3><b>Ihre Stellungnahme</b> <span style="font-weight: normal;">(150 bis 300 Wörter):</span></h3>
             <textarea id="notes" placeholder="Hier können Sie Ihre Notizen machen..."></textarea>
             <div class="word-counter">
                 Wörter: <span id="wordCount">0</span>
@@ -212,8 +212,27 @@
         </div>
         <button id="saveNotes">Notizen speichern</button>
         <footer>
-            <p>Hinweis: Um die Quellen im Detail zu lesen, klicken Sie auf die Buttons. Kehren Sie anschließend mit dem Zurück-Button Ihres Browsers zur Übersicht zurück.</p>
+            <div style="
+                border: 2px solid red; 
+                border-radius: 8px; 
+                background-color: #ffe6e6; 
+                padding: 15px; 
+                text-align: center; 
+                font-size: 16px;
+                max-width: 600px;
+                margin: 20px auto;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+                
+                <p style="color: #333; margin: 0;">
+                    Wenn Sie sicher sind, dass Sie mit der Aufgabe fertig sind und Ihre Stellungnahme vollständig ist,  
+                    <span style="color: red; font-weight: bold;">kopieren</span> Sie den Text mit  
+                    <span style="color: red; font-weight: bold;">Strg + C</span>  
+                    und drücken Sie anschließend  
+                    <span style="color: red; font-weight: bold;">F10</span>.
+                </p>
+            </div>
         </footer>
+        
 
     <script>
         const notesField = document.getElementById('notes');
